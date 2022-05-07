@@ -1,13 +1,13 @@
 # WSLg+Docker Setup on Windows 11
 
 ## On Windows 11
-- Install [**Windows Subsystem for Linux Preview**](https://www.microsoft.com/store/productId/9P9TQF7MRM4R) (*Microsoft Store App)
+- ~Install [**Windows Subsystem for Linux Preview**](https://www.microsoft.com/store/productId/9P9TQF7MRM4R) (*Microsoft Store App)~
 - Download and install
-  - [**CUDA on Windows Subsystem for Linux (WSL)**](https://developer.nvidia.com/cuda/wsl/download)
+  - ~[**CUDA on Windows Subsystem for Linux (WSL)**](https://developer.nvidia.com/cuda/wsl/download)~
   - [**Visual Studio Code**](https://code.visualstudio.com/download)
 - Open **Windows Terminal (Admin)**
   - Displays a list of available distributions for install
-  - Install **Ubuntu 18.04 LTS**
+  - Install **Ubuntu 18.04 LTS (or any other ubuntu distribution like Ubuntu-20.04)**
 
 ```bash
 > wsl --list --online
