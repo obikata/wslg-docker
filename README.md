@@ -150,7 +150,7 @@ $ distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
    && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
 $ sudo apt-get update
 $ sudo apt-get install -y nvidia-docker2
-$ sudo systemctl restart docker
+$ sudo service docker restart
 $ docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
 Mon Jan  3 04:34:34 2022       
 +-----------------------------------------------------------------------------+
@@ -177,30 +177,30 @@ Mon Jan  3 04:34:34 2022
 
 - Build docker image using Dockerfile
 ```bash
-$ cd tmp/
+$ mkdir Downloads
+$ cd Downloads/
 $ git clone https://github.com/obikata/Dockerfiles.git
 $ git clone https://github.com/obikata/orb-slam3.git
+$ wget -c http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/machine_hall/MH_01_easy/MH_01_easy.zip
+$ unzip MH_01_easy.zip -d orb-slam3/Examples/MH01
 $ cd Dockerfiles/orb-slam3-wslg
 $ docker build -t orb-slam3-wslg .
 ```
 
 - Run a new container using the built image
 ```bash
-docker run --env="DISPLAY" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name orb-slam3-wslg -d -it --mount type=bind,src=/home/obikata/tmp,dst=/home/obikata/tmp orb-slam3-wslg
+docker run --gpus all --env="DISPLAY" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name orb-slam3-wslg -d -it --mount type=bind,src=/home/obikata/Downloads,dst=/home/obikata/Downloads orb-slam3-wslg
 ```
 
 - Start and attach to the new container
 ```bash
-$ docker 
 $ docker start orb-slam3-wslg
 $ docker attach orb-slam3-wslg
 ```
 
 - Run ORB-SLAM3 (e.g. EuRoC MH01)
 ```bash
-$ cd tmp/orb-slam3/
+$ cd Downloads/orb-slam3/
 $ ./build.sh
 $ ./Examples/Monocular/mono_euroc Vocabulary/ORBvoc.txt Examples/Monocular/EuRoC.yaml Examples/MH01/ Examples/Monocular/EuRoC_TimeStamps/MH01.txt
 ```
-
-## Running DOPE Example
