@@ -181,7 +181,7 @@ $ mkdir Downloads
 $ cd Downloads/
 $ git clone https://github.com/obikata/Dockerfiles.git
 $ git clone https://github.com/obikata/orb-slam3.git
-$ wget -c http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/machine_hall/MH_01_easy/MH_01_easy.zip
+$ wget http://robotics.ethz.ch/~asl-datasets/ijrr_euroc_mav_dataset/machine_hall/MH_01_easy/MH_01_easy.zip
 $ unzip MH_01_easy.zip -d orb-slam3/Examples/MH01
 $ cd Dockerfiles/orb-slam3-wslg
 $ docker build -t orb-slam3-wslg .
