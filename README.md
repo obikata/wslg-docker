@@ -189,7 +189,7 @@ $ docker build -t orb-slam3-wslg .
 
 - Run a new container using the built image
 ```bash
-docker run --gpus all --env="DISPLAY" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name orb-slam3-wslg -d -it --mount type=bind,src=/home/obikata/Downloads,dst=/home/obikata/Downloads orb-slam3-wslg
+docker run --gpus all --env="DISPLAY" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name orb-slam3-wslg -d -it --mount type=bind,src=/home/obikata,dst=/home/obikata orb-slam3-wslg
 ```
 
 - Start and attach to the new container
